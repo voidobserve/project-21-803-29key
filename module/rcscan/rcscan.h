@@ -34,12 +34,19 @@
 // #define INPUT_GPIO_BITS								(BIT0|BIT1|BIT2|BIT9|BIT10)
 // #define OTPUT_GPIO_BITS								(BIT3|BIT4|BIT5|BIT6|BIT7|GNDB)
 
-
 #elif(HW_DETECT_TYPE == RC_SCAN_19KEY_TYPE)			
 #define INPUT_GPIO_BITS								(BIT5|BIT6|BIT7|BIT9)
 #define OTPUT_GPIO_BITS								(BIT0|BIT1|BIT4)
-#endif
 
+// #elif(HW_DETECT_TYPE == RC_SCAN_29KEY_TYPE)			
+// #define INPUT_GPIO_BITS								(BIT1 | BIT3 | BIT4 | BIT6 | BIT7 | BIT10)
+// #define OTPUT_GPIO_BITS								(BIT0 | BIT2 | BIT5 | BIT9 | GNDB) // GNDB不能配置到 INPUT_GPIO_BITS 中,否则一上电会一直发送
+// #endif
+
+#elif(HW_DETECT_TYPE == RC_SCAN_29KEY_TYPE)			
+#define INPUT_GPIO_BITS								(BIT1 | BIT3 | BIT4 | BIT6 | BIT7 | BIT9)
+#define OTPUT_GPIO_BITS								(BIT0 | BIT2 | BIT5 | BIT10 | GNDB) // GNDB不能配置到 INPUT_GPIO_BITS 中,否则一上电会一直发送
+#endif
 
 
 #define WAKEUP_IO									INPUT_GPIO_BITS

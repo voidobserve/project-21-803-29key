@@ -34,6 +34,8 @@
 
 /***************************HW DETECT TYPE DEFINE****************************/
 /*RCSCAN*/
+#define RC_SCAN_29KEY_TYPE					(0x2901)
+
 #define RC_SCAN_25KEY_TYPE					(0x2501)
 #define RC_SCAN_24KEY_TYPE					(0x2401)
 #define RC_SCAN_16KEY_TYPE					(0x1601)

@@ -178,43 +178,44 @@ const str_key_fun keys_func_table[KEYS_FUNCTION_NUM] =
 	{
 		/* 
 			脚位连接（哪两个脚位相连表示对应的按键按下） 
-					短按时间阈值	短按调用的函数	短按键值	长按时间阈值	长按调用的函数		长按键值  每个数据包的平均时间间隔  停止按下的时间阈值（停止发送的时间阈值）
+						短按时间阈值	短按调用的函数	短按键值	长按时间阈值	长按调用的函数		长按键值  每个数据包的平均时间间隔  停止按下的时间阈值（停止发送的时间阈值）
 		*/ 
-		{(BIT1 | BIT3), 5, direct_key_value, {0x11}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x11}, SEND_BEACON_MAX_TIMES, 60000},
-		{(BIT1 | BIT4), 5, direct_key_value, {0x12}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x12}, SEND_BEACON_MAX_TIMES, 60000},
-		{(BIT1 | BIT5), 5, direct_key_value, {0x13}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x13}, SEND_BEACON_MAX_TIMES, 60000},
-		{(BIT1 | BIT6), 5, direct_key_value, {0x14}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x14}, SEND_BEACON_MAX_TIMES, 60000},
+		/*按键1*/{(BIT1 | BIT5), 5, direct_key_value, {0x11}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x11}, SEND_BEACON_MAX_TIMES, 60000},
 
-		{(BIT10 | BIT3), 5, direct_key_value, {0x21}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x21}, SEND_BEACON_MAX_TIMES, 60000},
-		{(BIT10 | BIT4), 5, direct_key_value, {0x22}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x22}, SEND_BEACON_MAX_TIMES, 60000},
-		{(BIT10 | BIT5), 5, direct_key_value, {0x23}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x23}, SEND_BEACON_MAX_TIMES, 60000},
-		{(BIT10 | BIT6), 5, direct_key_value, {0x24}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x24}, SEND_BEACON_MAX_TIMES, 60000},
+		/*按键2*/{(BIT7 | BIT5), 5, direct_key_value, {0x12}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x12}, SEND_BEACON_MAX_TIMES, 60000},
+		/*按键3*/{(BIT4 | BIT5), 5, direct_key_value, {0x13}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x13}, SEND_BEACON_MAX_TIMES, 60000},
+		/*按键4*/{(BIT3 | BIT5), 5, direct_key_value, {0x14}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x14}, SEND_BEACON_MAX_TIMES, 60000},
 
-		{(BIT9 | BIT3), 5, direct_key_value, {0x31}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x31}, SEND_BEACON_MAX_TIMES, 60000},
-		{(BIT9 | BIT4), 5, direct_key_value, {0x32}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x32}, SEND_BEACON_MAX_TIMES, 60000},
-		{(BIT9 | BIT5), 5, direct_key_value, {0x33}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x33}, SEND_BEACON_MAX_TIMES, 60000},
-		{(BIT9 | BIT6), 5, direct_key_value, {0x34}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x34}, SEND_BEACON_MAX_TIMES, 60000},
+		/*按键5*/{(BIT9 | BIT5), 5, direct_key_value, {0x21}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x21}, SEND_BEACON_MAX_TIMES, 60000},
+		/*按键6*/{(BIT9 | BIT0), 5, direct_key_value, {0x22}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x22}, SEND_BEACON_MAX_TIMES, 60000},
+		/*按键7*/{(BIT6 | BIT0), 5, direct_key_value, {0x23}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x23}, SEND_BEACON_MAX_TIMES, 60000},
 
-		{(BIT2 | BIT3), 5, direct_key_value, {0x41}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x41}, SEND_BEACON_MAX_TIMES, 60000},
-		{(BIT2 | BIT4), 5, direct_key_value, {0x42}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x42}, SEND_BEACON_MAX_TIMES, 60000},
-		{(BIT2 | BIT5), 5, direct_key_value, {0x43}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x43}, SEND_BEACON_MAX_TIMES, 60000},
-		{(BIT2 | BIT6), 5, direct_key_value, {0x44}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x44}, SEND_BEACON_MAX_TIMES, 60000},
+		/*按键8*/{(BIT9 | GNDB), 5, direct_key_value, {0x24}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x24}, SEND_BEACON_MAX_TIMES, 60000},
+		/*按键9*/{(BIT9 | BIT10), 5, direct_key_value, {0x31}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x31}, SEND_BEACON_MAX_TIMES, 60000},
+		/*按键10*/{(BIT9 | BIT2), 5, direct_key_value, {0x32}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x32}, SEND_BEACON_MAX_TIMES, 60000},
 
-		{(BIT0 | BIT3), 5, direct_key_value, {0x51}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x51}, SEND_BEACON_MAX_TIMES, 60000},
-		{(BIT0 | BIT4), 5, direct_key_value, {0x52}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x52}, SEND_BEACON_MAX_TIMES, 60000},
-		{(BIT0 | BIT5), 5, direct_key_value, {0x53}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x53}, SEND_BEACON_MAX_TIMES, 60000},
-		{(BIT0 | BIT6), 5, direct_key_value, {0x54}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x54}, SEND_BEACON_MAX_TIMES, 60000},
+		/*按键11*/{(BIT6 | GNDB), 5, direct_key_value, {0x33}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x33}, SEND_BEACON_MAX_TIMES, 60000},
+		/*按键12*/{(BIT6 | BIT10), 5, direct_key_value, {0x34}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x34}, SEND_BEACON_MAX_TIMES, 60000},
+		/*按键13*/{(BIT6 | BIT2), 5, direct_key_value, {0x41}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x41}, SEND_BEACON_MAX_TIMES, 60000},
 
-		{(BIT7 | BIT3), 5, direct_key_value, {0x61}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x61}, SEND_BEACON_MAX_TIMES, 60000},
-		{(BIT7 | BIT4), 5, direct_key_value, {0x62}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x62}, SEND_BEACON_MAX_TIMES, 60000},
-		{(BIT7 | BIT5), 5, direct_key_value, {0x63}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x63}, SEND_BEACON_MAX_TIMES, 60000},
-		{(BIT7 | BIT6), 5, direct_key_value, {0x64}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x64}, SEND_BEACON_MAX_TIMES, 60000},
+		/*按键14*/{(BIT7 | GNDB), 5, direct_key_value, {0x42}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x42}, SEND_BEACON_MAX_TIMES, 60000},
+		/*按键15*/{(BIT7 | BIT10), 5, direct_key_value, {0x43}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x43}, SEND_BEACON_MAX_TIMES, 60000},
+		/*按键16*/{(BIT7 | BIT2), 5, direct_key_value, {0x44}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x44}, SEND_BEACON_MAX_TIMES, 60000},
+		/*按键17*/{(BIT7 | BIT0), 5, direct_key_value, {0x51}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x51}, SEND_BEACON_MAX_TIMES, 60000},
 
-		{(GNDB | BIT3), 5, direct_key_value, {0x01}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x01}, SEND_BEACON_MAX_TIMES, 60000},
-		{(GNDB | BIT4), 5, direct_key_value, {0x02}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x02}, SEND_BEACON_MAX_TIMES, 60000},
-		{(GNDB | BIT5), 5, direct_key_value, {0x03}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x03}, SEND_BEACON_MAX_TIMES, 60000},
-		{(GNDB | BIT6), 5, direct_key_value, {0x04}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x04}, SEND_BEACON_MAX_TIMES, 60000},
-		
-		{(GNDB | BIT6), 5, direct_key_value, {0x04}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x04}, SEND_BEACON_MAX_TIMES, 60000},
+		/*按键18*/{(BIT4 | GNDB), 5, direct_key_value, {0x52}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x52}, SEND_BEACON_MAX_TIMES, 60000},
+		/*按键19*/{(BIT4 | BIT10), 5, direct_key_value, {0x53}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x53}, SEND_BEACON_MAX_TIMES, 60000},
+		/*按键20*/{(BIT4 | BIT2), 5, direct_key_value, {0x54}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x54}, SEND_BEACON_MAX_TIMES, 60000},
+		/*按键21*/{(BIT4 | BIT0), 5, direct_key_value, {0x61}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x61}, SEND_BEACON_MAX_TIMES, 60000},
+
+		/*按键22*/{(BIT1 | GNDB), 5, direct_key_value, {0x62}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x62}, SEND_BEACON_MAX_TIMES, 60000},
+		/*按键23*/{(BIT1 | BIT10), 5, direct_key_value, {0x63}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x63}, SEND_BEACON_MAX_TIMES, 60000},
+		/*按键24*/{(BIT1 | BIT2), 5, direct_key_value, {0x64}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x64}, SEND_BEACON_MAX_TIMES, 60000},
+		/*按键25*/{(BIT1 | BIT0), 5, direct_key_value, {0x01}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x01}, SEND_BEACON_MAX_TIMES, 60000},
+
+		/*按键26*/{(BIT3 | GNDB), 5, direct_key_value, {0x02}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x02}, SEND_BEACON_MAX_TIMES, 60000},
+		/*按键27*/{(BIT3 | BIT10), 5, direct_key_value, {0x03}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x03}, SEND_BEACON_MAX_TIMES, 60000},
+		/*按键28*/{(BIT3 | BIT2), 5, direct_key_value, {0x04}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x04}, SEND_BEACON_MAX_TIMES, 60000},
+		/*按键29*/{(BIT3 | BIT0), 5, direct_key_value, {0x71}, SEND_BEACON_MAX_TIMES, direct_key_value, {0x71}, SEND_BEACON_MAX_TIMES, 60000},
 };
 #endif
