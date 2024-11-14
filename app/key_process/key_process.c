@@ -41,6 +41,7 @@ void key_process(uint32_t key_value, uint32_t press_time)
 					// pack packet only when it's pack interval
 					if (0x00 == ((press_time - p_key_fun->long_press_threshold) % p_key_fun->pack_adv_interval))
 					{
+						// 长按
 						p_key_fun->long_press_handler((str_fun_para *)&p_key_fun->long_press_para);
 					}
 					else

@@ -14,7 +14,6 @@
 ** ---------------------------------------------------------------
 */
 
-
 /* Includes -----------------------------------------------------*/
 #include "sys.h"
 #include "type.h"
@@ -32,30 +31,30 @@
 void set_debounce(uint8_t deb_ms)
 {
     uint32_t reg_val = 0;
-    reg_val = ((deb_ms<<5) << 8)&WT_DEB_VAL;//ms -> 32K,modified by flege,20200602
-    write_reg( WT_CTL, reg_val);
+    reg_val = ((deb_ms << 5) << 8) & WT_DEB_VAL; // ms -> 32K,modified by flege,20200602
+    write_reg(WT_CTL, reg_val);
 }
 void wakeup_timer_enable(void)
 {
     uint32_t reg_val = read_reg(WT_CTL);
     reg_val |= WT_EN;
-    write_reg( WT_CTL, reg_val);
+    write_reg(WT_CTL, reg_val);
 }
 
 void wakeup_timer_disable(void)
 {
-    #if 0
+#if 0
     uint32_t reg_val = read_reg(WT_CTL);
     reg_val &= ~WT_EN;
     write_reg( WT_CTL, reg_val);
-    #else
-    write_reg( WT_CTL, 0);
-    #endif
+#else
+    write_reg(WT_CTL, 0);
+#endif
 }
 
 void set_wt_compare_val(uint8_t wt_compare_val)
 {
-    write_reg( WT_COMPARE, wt_compare_val);
+    write_reg(WT_COMPARE, wt_compare_val);
 }
 
 void wt_input_enable(uint32_t reg_bits)
@@ -100,9 +99,9 @@ void wt_int_clear(void)
 
 void wt_soft_reset(void)
 {
-    write_reg(TOP_SOFT_RESET2,WT_SOFT_RESET);
-	delay_us(10);
-	write_reg(TOP_SOFT_RESET2,0x0);
+    write_reg(TOP_SOFT_RESET2, WT_SOFT_RESET);
+    delay_us(10);
+    write_reg(TOP_SOFT_RESET2, 0x0);
 }
 
 /*****************************************************************************************
@@ -113,45 +112,46 @@ void wt_soft_reset(void)
  * @param[in] wakeup_level 	wakeup level,hight/low,0x01:high;0x00:low
  * @param[in] debounce   	debounce ,debounce value cannot be set to zero
  *****************************************************************************************/
-void wakeup_timer_init(uint32_t reg_bits,uint8_t pull_en,uint8_t wakeup_level,uint8_t debounce_ms)
+void wakeup_timer_init(uint32_t reg_bits, uint8_t pull_en, uint8_t wakeup_level, uint8_t debounce_ms)
 {
-	uint8_t loopback_pull_en = 0x03;//default disable pull
-	uint32_t wakeup_level_bits = 0x00;//default low level wakeup
+    uint8_t loopback_pull_en = 0x03;   // default disable pull
+    uint32_t wakeup_level_bits = 0x00; // default low level wakeup
 
-	//bug fixed,flege add at 20200602
-	wt_soft_reset();
-	
-    wt_input_enable(reg_bits);//INPUT_EN, in[bit]
-    set_wt_compare_val(EVENT_COUNT);//COUNTER
-    wt_int_enable();//INT_EN
+    // bug fixed,flege add at 20200602
+    wt_soft_reset();
 
-	/*set wakeup level,hight/low level*/
-    if(wakeup_level)
+    wt_input_enable(reg_bits);       // INPUT_EN, in[bit]
+    set_wt_compare_val(EVENT_COUNT); // COUNTER
+    wt_int_enable();                 // INT_EN
+
+    /*set wakeup level,hight/low level*/
+    if (wakeup_level)
     {
-    	wakeup_level_bits = reg_bits;	
+        wakeup_level_bits = reg_bits;
     }
-	
-	wt_pol_set(wakeup_level_bits);
 
-	/*set pull enable*/
-	loopback_pull_en = 0x01 <<pull_en;
+    wt_pol_set(wakeup_level_bits);
 
-	/*set debounce time*/
-    set_debounce(debounce_ms);//DEBOUNCE
-    
+    /*set pull enable*/
+    loopback_pull_en = 0x01 << pull_en;
+
+    /*set debounce time*/
+    set_debounce(debounce_ms); // DEBOUNCE
+
     /*wakeup io fuction config and io pullup*/
-    for(int8_t i = 0; i < GPIO_MAX_NUM; i++)
+    // 将IO复用为唤醒IO
+    for (int8_t i = 0; i < GPIO_MAX_NUM; i++)
     {
-        if(reg_bits&(0x01<<i))
+        if (reg_bits & (0x01 << i))
         {
             sys_set_port_mux((PAD_MUX_BASE_ADDR + (i << 2)), PAD_MUX_FUNCTION_6 | (loopback_pull_en & 0x3));
         }
     }
 
-    wakeup_timer_enable(); //enable wakeup timer module	
+    wakeup_timer_enable(); // enable wakeup timer module
 }
 
 void clear_sleep_status(void)
 {
-    write_reg(TOP_POWER_CTRL_REG, 0x0); //sleep
+    write_reg(TOP_POWER_CTRL_REG, 0x0); // sleep
 }

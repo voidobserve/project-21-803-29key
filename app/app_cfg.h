@@ -29,7 +29,7 @@
 
 
 /****************************ABNORMAL PROTEC FUNCTION**************************/
-#define SYS_CRASH_WTD_RESET_ENABLE					ENABLE
+#define SYS_CRASH_WTD_RESET_ENABLE					DISABLE
 #if(SYS_CRASH_WTD_RESET_ENABLE)
 #define WATCH_DOG_RESET_TIME						2000//unit:ms
 #endif
